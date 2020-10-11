@@ -19,7 +19,7 @@ app.use(methodOverride('_method'));
 
 // HOME
 app.get('/', (req, res) => {
-    res.send('This is the home page!');
+    res.render('index')
 });
 
 app.use('/playlists', ctrl.playlists);
