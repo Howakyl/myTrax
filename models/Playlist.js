@@ -8,7 +8,8 @@ const playlistSchema = new Schema({
         required: true,
     },
     genre: {
-        type: [String],
+        type: String,
+        default: 'Pop',
         required: true
     },
 } , {timestamps: true});
