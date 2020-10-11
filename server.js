@@ -9,6 +9,8 @@ require('dotenv').config();
 const PORT = process.env.PORT || 3000;
 app.set('view engine', 'ejs');
 
+const ctrl = require('./controllers');
+
 app.use(bodyParser.urlencoded({extended: false}));
 
 // ---------- MIDDLEWARE
@@ -17,8 +19,10 @@ app.use(methodOverride('_method'));
 
 // HOME
 app.get('/', (req, res) => {
-    res.send('This is the home page!');
-})
+    res.render('index')
+});
+
+app.use('/playlists', ctrl.playlists);
 
 // ---------- LISTENER
 app.listen(PORT, () => console.log(`Server running on PORT: ${PORT}`));
