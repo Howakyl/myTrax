@@ -57,7 +57,6 @@ router.get('/:playlistId/edit' , (req,res) => {
     });
 });
 
-
 //PUT - Update
 router.put('/:playlistId' , (req,res) => {
     db.Playlist.findByIdAndUpdate(
@@ -72,7 +71,6 @@ router.put('/:playlistId' , (req,res) => {
     });
 });
 
-
 //DELETE - Remove playlist
 router.delete('/:playlistId' , (req,res) => {
     db.Playlist.findByIdAndDelete(req.params.playlistId , (err, deletedPlaylist) => {
@@ -81,7 +79,5 @@ router.delete('/:playlistId' , (req,res) => {
         res.redirect('/playlists');
     });
 });
-
-
 
 module.exports = router;
