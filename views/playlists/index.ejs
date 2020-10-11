@@ -11,7 +11,7 @@
     <ul>
         <% for(let i = 0; i < playlists.length; i ++) { %>
             <li>
-                <a href="/playlists/<%= i %>"><%= playlists[i].playlistName %></a>
+                <a href="/playlists/<%= playlists[i]._id %>"><%= playlists[i].playlistName %></a>
             </li>
         <% } %>
     </ul>
