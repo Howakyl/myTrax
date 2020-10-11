@@ -18,7 +18,7 @@ app.use(methodOverride('_method'));
 // HOME
 app.get('/', (req, res) => {
     res.send('This is the home page!');
-})
+});
 
 // ---------- LISTENER
 app.listen(PORT, () => console.log(`Server running on PORT: ${PORT}`));
