@@ -10,4 +10,11 @@ router.get('/' , (req,res) => {
     res.render('playlists/index');
 });
 
+//GET NEW
+router.get('/new' , (req,res) => {
+    res.render('playlists/new');
+});
+
+
+
 module.exports = router;
