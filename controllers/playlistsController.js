@@ -44,6 +44,35 @@ router.post('/' , (req,res) => {
     });
 });
 
+//GET - Edit
+router.get('/:playlistId/edit' , (req,res) => {
+    db.Playlist.findById(req.params.playlistId, (err,foundPlaylist) => {
+        if (err) return console.log(err);
+
+        const context = {
+            playlist: foundPlaylist,
+        };
+
+        res.render('playlists/edit' , context);
+    });
+});
+
+
+//PUT - Update
+router.put('/:playlistId' , (req,res) => {
+    db.Playlist.findByIdAndUpdate(
+        req.params.playlistId,
+        req.body,
+        {new: true},
+        (err, updatedPlaylist) => {
+        if (err) return console.log(err);
+
+        console.log(updatedPlaylist);
+        res.redirect(`/playlists/${updatedPlaylist._id}`);
+    });
+});
+
+
 //DELETE - Remove playlist
 router.delete('/:playlistId' , (req,res) => {
     db.Playlist.findByIdAndDelete(req.params.playlistId , (err, deletedPlaylist) => {

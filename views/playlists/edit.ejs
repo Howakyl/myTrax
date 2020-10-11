@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Express Music</title>
+</head>
+<body>
+    <h1><%= playlist.playlistName %></h1>
+
+    <h2>Genre: <%= playlist.genre %></h2>
+    
+    <form action="/playlists/<%= playlist._id %>?_method=PUT" method="POST">
+        <div>
+            <label for="playlistName">Playlist Name:</label>
+                <input type="text" name="playlistName" value="<%= playlist.playlistName %>">
+        </div>
+        <div>
+            <label for="genre">Genre:</label>
+                <select name="genre">
+                    <option>Select One:</option>
+                    <option value="R&B">R&B</option>
+                    <option value="Rock">Rock</option>
+                    <option value="Jazz">Jazz</option>
+                    <option value="Pop">Pop</option>
+                    <option value="Country">Country</option>
+                </select>
+                <input type="submit" value="Save Changes">
+        </div>
+    </form>
+
+    <section>
+        <form action="/playlists/<%= playlist._id %>?_method=DELETE" method="POST">
+            <input type="submit" value="Delete Playlist">
+        </form>
+    </section>
+</body>
+</html>
