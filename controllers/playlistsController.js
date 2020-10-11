@@ -44,7 +44,14 @@ router.post('/' , (req,res) => {
     });
 });
 
+//DELETE - Remove playlist
+router.delete('/:playlistId' , (req,res) => {
+    db.Playlist.findByIdAndDelete(req.params.playlistId , (err, deletedPlaylist) => {
+        if (err) return console.log(err);
 
+        res.redirect('/playlists');
+    });
+});
 
 
 
