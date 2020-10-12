@@ -1,3 +1,4 @@
 module.exports = {
-    playlists: require('./playlistsController')
+    playlists: require('./playlistsController'),
+    songs: require('./songsControllers')
 }

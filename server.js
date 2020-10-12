@@ -19,10 +19,11 @@ app.use(methodOverride('_method'));
 
 // HOME
 app.get('/', (req, res) => {
-    res.render('index')
+    res.render('index');
 });
 
 app.use('/playlists', ctrl.playlists);
+app.use('/songs', ctrl.songs);
 
 // ---------- LISTENER
 app.listen(PORT, () => console.log(`Server running on PORT: ${PORT}`));

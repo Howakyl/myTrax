@@ -12,6 +12,10 @@ const playlistSchema = new Schema({
         default: 'Pop',
         required: true
     },
+    song: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Song'
+    }]
 } , {timestamps: true});
 
 const Playlist = mongoose.model('Playlist' , playlistSchema);

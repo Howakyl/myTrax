@@ -11,5 +11,6 @@ mongoose.connection.on('connected' , () => console.log('MongoDB connected succes
 mongoose.connection.on('error' , (err) => console.log(err));
 
 module.exports = {
-    Playlist: require('./Playlist')
+    Playlist: require('./Playlist'),
+    Song: require('./Song')
 };
