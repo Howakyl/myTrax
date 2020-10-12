@@ -8,13 +8,15 @@ const db = require('../models');
 //GET INDEX
 router.get('/' , (req,res) => {
 
-    db.Playlist.find({}, (err,allPlaylists) => {
-        if (err) return console.log(err);
-        const context = {
-            playlists: allPlaylists
-        };
-    
-        res.render('playlists/index' , context);
+    db.Playlist.find({})
+        .populate('song')
+        .exec((err,allPlaylists) => {
+            if (err) return console.log(err);
+            const context = {
+                playlists: allPlaylists
+            };
+        
+            res.render('playlists/index' , context);
     });
 });
 
