@@ -51,15 +51,16 @@ router.post('/' , (req,res) => {
 
 //GET - Edit
 router.get('/:playlistId/edit' , (req,res) => {
-    db.Playlist.findById(req.params.playlistId, (err,foundPlaylist) => {
-        if (err) return console.log(err);
-
-        const context = {
-            playlist: foundPlaylist,
-        };
-
-        res.render('playlists/edit' , context);
-    });
+    db.Playlist.findById(req.params.playlistId)
+        .populate('song')
+        .exec((err,foundPlaylist) => {
+            if (err) return console.log(err);
+    
+            const context = {
+                playlist: foundPlaylist,
+            };
+            res.render('playlists/edit' , context);
+        });
 });
 
 //PUT - Update
