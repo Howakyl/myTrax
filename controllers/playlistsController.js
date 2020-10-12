@@ -23,7 +23,7 @@ router.get('/new' , (req,res) => {
     res.render('playlists/new');
 });
 
-//GET Show playlists
+//GET Show playlist
 router.get('/:playlistId' , (req,res) => {
     db.Playlist.findById(req.params.playlistId)
     .populate('song')
