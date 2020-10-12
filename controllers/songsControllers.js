@@ -64,17 +64,21 @@ router.get('/:songId/edit' , (req,res) => {
 
 //PUT - Update
 router.put('/:songId' , (req,res) => {
-    db.Song.findByIdAndUpdate(
-        req.params.songId,
-        req.body,
-        {new: true},
-        (err, updatedSong) => {
-            if (err) return console.log(err);
-            console.log(updatedSong);
-
-            res.redirect('../playlists');
-        }
-    );
+    db.Playlist.findById(req.body.playlist, (err, foundPlaylist) => {
+        if (err) return console.log(err);
+        
+        db.Song.findByIdAndUpdate(
+            req.params.songId,
+            req.body,
+            {new: true},
+            (err, updatedSong) => {
+                if (err) return console.log(err);
+                console.log(updatedSong);
+    
+                res.redirect(`../playlists/${foundPlaylist.id}`);
+            }
+        );
+    });
 });
 
 //Delete
