@@ -45,4 +45,31 @@ router.post('/', (req, res) => {
     });
 });
 
+// GET - Edit 
+router.get('/:songId/edit' , (req,res) => {
+    db.Song.findById(req.params.songId, (err, foundSong) => {
+        if (err) return console.log(err);
+
+        const context = {
+            song: foundSong
+        };
+        res.render('songs/edit', context);
+    });
+});
+
+//PUT - Update
+router.put('/:songId' , (req,res) => {
+    db.Song.findByIdAndUpdate(
+        req.params.songId,
+        req.body,
+        {new: true},
+        (err, updatedSong) => {
+            if (err) return console.log(err);
+            console.log(updatedSong);
+
+            res.redirect(`/songs/${updatedSong._id}`);
+        }
+    );
+});
+
 module.exports = router;
