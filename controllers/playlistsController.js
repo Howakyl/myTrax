@@ -25,13 +25,16 @@ router.get('/new' , (req,res) => {
 
 //GET Show playlists
 router.get('/:playlistId' , (req,res) => {
-    db.Playlist.findById(req.params.playlistId , (err, foundPlaylist) => {
+    db.Playlist.findById(req.params.playlistId)
+    .populate('song')
+    .exec((err, foundPlaylist) => {
         if (err) return console.log(err);
 
         const context = {
             playlist: foundPlaylist
         };
         res.render('playlists/show' , context);
+    
     });
 });
 

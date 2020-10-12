@@ -6,9 +6,10 @@
     <title>Express Music</title>
 </head>
 <body>
-    <h1><%= playlist.playlistName %></h1>
-
-    <h2>Genre: <%= playlist.genre %></h2>
+    <header>
+        <h1><%= playlist.playlistName %></h1>
+        <h2>Genre: <%= playlist.genre %></h2>
+    </header>
     
     <form action="/playlists/<%= playlist._id %>?_method=PUT" method="POST">
         <div>
