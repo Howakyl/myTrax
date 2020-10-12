@@ -10,7 +10,7 @@
     <form action="/songs" method="POST">
         <select name="playlist">
             <% playlists.forEach((playlist) => { %>
-                <option value="<%= playlist.id %>"><%= playlists.playlistName %></option>
+                <option value="<%= playlist.id %>"><%= playlist.playlistName %></option>
             <% }) %>
         </select>
         <div>
