@@ -47,14 +47,19 @@ router.post('/', (req, res) => {
 
 // GET - Edit 
 router.get('/:songId/edit' , (req,res) => {
+    db.Playlist.find({} , (err, allPlaylists) => {
+        if (err) return console.log(err);
+
     db.Song.findById(req.params.songId, (err, foundSong) => {
         if (err) return console.log(err);
 
-        const context = {
-            song: foundSong
-        };
-        res.render('songs/edit', context);
-    });
+            const context = {
+                song: foundSong,
+                playlists: allPlaylists
+            };
+            res.render('songs/edit', context);
+        });
+    })
 });
 
 //PUT - Update
@@ -67,9 +72,30 @@ router.put('/:songId' , (req,res) => {
             if (err) return console.log(err);
             console.log(updatedSong);
 
-            res.redirect(`/songs/${updatedSong._id}`);
+            res.redirect('../playlists');
         }
     );
+});
+
+//Delete
+router.delete('/:songId' , (req,res) => {
+    const songId = req.params.songId;
+
+    db.Song.findByIdAndDelete(songId, (err) => {
+        if (err) return console.log(err);
+
+        db.Playlist.findOne({'song': songId} , (err, foundPlaylist) => {
+            if (err) return console.log(err);
+
+            foundPlaylist.song.remove(songId);
+            foundPlaylist.save((err, updatedPlaylist) => {
+                if (err) return console.log(err);
+
+                console.log('updated:' , updatedPlaylist);
+            });
+        });
+        res.redirect('/songs');
+    });
 });
 
 module.exports = router;
