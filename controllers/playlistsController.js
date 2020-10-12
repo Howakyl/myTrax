@@ -76,7 +76,12 @@ router.delete('/:playlistId' , (req,res) => {
     db.Playlist.findByIdAndDelete(req.params.playlistId , (err, deletedPlaylist) => {
         if (err) return console.log(err);
 
-        res.redirect('/playlists');
+        db.Song.deleteMany({_id: {$in: deletedPlaylist.song}} , (err, result) => {
+            if (err) return console.log(err);
+
+            console.log('deleted: ' , result);
+            res.redirect('/playlists');
+        });
     });
 });
 
