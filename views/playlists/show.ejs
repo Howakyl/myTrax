@@ -6,10 +6,33 @@
     <title>Express Music</title>
 </head>
 <body>
-    <h1><%= playlist.playlistName %></h1>
-
+    <header>
+        <h1><%= playlist.playlistName %></h1>
+        <h2>Genre: <%= playlist.genre %></h2>
+    </header>
     
-    <%= playlist.genre %>
+    <section>
+        <table>
+            <tr>
+                <th>Title</th>
+                <th>Artist</th>
+                <th>Album</th>
+            </tr>
+            <% playlist.song.forEach((song) => { %>
+                <tr>
+                        <td>
+                            <a <% if(song.link !== '') { %>
+                            href="<%= song.link %>"><%= song.songName %></a>
+                            <% } else {%> 
+                                <td><%= song.songName %></td>
+                            <% } %>
+                        </td>
+                        <td><%= song.artist %></td>
+                        <td><%= song.album %></td>
+                </tr>
+            <% }) %>
+        </table>
+    </section>
 
     <section>
         <!-- <a href="/playlists/<%= playlist._id %>/edit"> -->

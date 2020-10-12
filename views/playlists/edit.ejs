@@ -6,9 +6,10 @@
     <title>Express Music</title>
 </head>
 <body>
-    <h1><%= playlist.playlistName %></h1>
-
-    <h2>Genre: <%= playlist.genre %></h2>
+    <header>
+        <h1><%= playlist.playlistName %></h1>
+        <h2>Genre: <%= playlist.genre %></h2>
+    </header>
     
     <form action="/playlists/<%= playlist._id %>?_method=PUT" method="POST">
         <div>
@@ -18,15 +19,57 @@
         <div>
             <label for="genre">Genre:</label>
                 <select name="genre">
-                    <option>Select One:</option>
-                    <option value="R&B">R&B</option>
-                    <option value="Rock">Rock</option>
-                    <option value="Jazz">Jazz</option>
-                    <option value="Pop">Pop</option>
-                    <option value="Country">Country</option>
+                    <option><%= playlist.genre %></option>
+                    <% if (playlist.genre !== 'R&B') { %>
+                        <option value="R&B">R&B</option>
+                    <% } %>
+                    <% if (playlist.genre !== 'Rock') { %>
+                        <option value="Rock">Rock</option>
+                    <% } %>
+                    <% if (playlist.genre !== 'Jazz') { %>
+                        <option value="Jazz">Jazz</option>
+                    <% } %>
+                    <% if (playlist.genre !== 'Pop') { %>
+                        <option value="Pop">Pop</option>
+                    <% } %>
+                    <% if (playlist.genre !== 'Country') { %>
+                        <option value="Country">Country</option>
+                    <% } %>
                 </select>
-                <input type="submit" value="Save Changes">
         </div>
+    <section>
+        <!-- <form action="../songs/<%= playlist.song._id %>?_method=PUT" method="POST"> -->
+            <table>
+                <tr>
+                    <th>Title</th>
+                    <th>Artist</th>
+                    <th>Album</th>
+                    <th>Link</th>
+                </tr>
+                <% playlist.song.forEach((song) => { %>
+                    <tr>
+                            <td>
+                                <label for="songName"></label>
+                                <input type="text" name="songName" value="<%= song.songName %>">
+                            </td>
+                            <td>
+                                <label for="artist"></label>
+                                <input type="text" name="artist" value="<%= song.artist %>">
+                            </td>
+                            <td>
+                                <label for="album"></label>
+                                <input type="text" name="album" value="<%= song.album %>">
+                            </td>
+                            <td>
+                                <label for="link"></label>
+                                <input type="text" name="link" value="<%= song.link %>">
+                            </td>
+                    </tr>
+                <% }) %>
+            </table>
+            <input type="submit" value="Save Changes">
+        <!-- </form> -->
+    </section>
     </form>
 
     <section>
@@ -34,5 +77,6 @@
             <input type="submit" value="Delete Playlist">
         </form>
     </section>
+    
 </body>
 </html>
