@@ -12,5 +12,5 @@ mongoose.connection.on('error' , (err) => console.log(err));
 
 module.exports = {
     Playlist: require('./Playlist'),
-    Songs: require('./Song')
+    Song: require('./Song')
 };

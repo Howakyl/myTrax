@@ -34,7 +34,7 @@ router.post('/', (req, res) => {
 
         db.Playlist.findById(req.body.playlist, (err, foundPlaylist) => {
             if(err) return console.log(err);
-            foundPlaylist.songs.push(newSong._id);
+            foundPlaylist.song.push(newSong._id);
 
             foundPlaylist.save((err, savedPlaylist) => {
                 if(err) return console.log(err);
