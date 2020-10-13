@@ -85,6 +85,7 @@
             </table>
     </section>
     <button><a href="/playlists/<%= playlist._id %>">Save Playlist</a></button>
+    <button><a href="/songs/new">Add Songs</a></button>
     <section>
         <form action="/playlists/<%= playlist._id %>?_method=DELETE" method="POST">
             <input type="submit" value="Delete Playlist">

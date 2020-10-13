@@ -28,7 +28,7 @@
                 <tr>
                         <td>
                             <a <% if(song.link !== '') { %>
-                            href="<%= song.link %>"><%= song.songName %></a>
+                            href="<%= song.link %>" target="_blank"><%= song.songName %></a>
                             <% } else {%> 
                                 <td><%= song.songName %></td>
                             <% } %>
