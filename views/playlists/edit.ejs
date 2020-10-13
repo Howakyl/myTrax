@@ -48,10 +48,11 @@
                     <th>Album</th>
                     <th>Link</th>
                     <th>Edit</th>
+                    <th>Delete</th>
                 </tr>
                 <% playlist.song.forEach((song) => { %>
                     <tr>
-                        <form action="/playlists/<%= playlist._id %>?_method=PUT" method="POST">
+                        <form action="/songs/<%= song._id %>?_method=PUT" method="POST">
                             <td>
                                 <label for="songName"></label>
                                 <input type="text" name="songName" value="<%= song.songName %>">
@@ -69,14 +70,22 @@
                                 <input type="text" name="link" value="<%= song.link %>">
                             </td>
                             <td>
-                                <input type="submit" value="Save Songs">
+                                <input type="submit" value="Save Song">
                             </td>
+                            <input type="hidden" name="playlistId" value="<%= playlist._id %>"> 
                         </form>
+                        <form action="/songs/<%= song._id %>?_method=DELETE" method="POST">
+                            <td>
+                                <input type="submit" value="Delete Song">
+                                <input type="hidden" name="playlistId" value="<%= playlist._id %>"> 
+                            </td>
+                        </form> 
                     </tr>
                 <% }) %>
             </table>
     </section>
     <button><a href="/playlists/<%= playlist._id %>">Save Playlist</a></button>
+    <button><a href="/songs/new">Add Songs</a></button>
     <section>
         <form action="/playlists/<%= playlist._id %>?_method=DELETE" method="POST">
             <input type="submit" value="Delete Playlist">

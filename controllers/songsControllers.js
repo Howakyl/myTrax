@@ -65,18 +65,17 @@ router.get('/:songId/edit' , (req,res) => {
 
 //PUT - Update
 router.put('/:songId' , (req,res) => {
-    db.Playlist.findById(req.body.playlist, (err, foundPlaylist) => {
+    db.Playlist.findById(req.body.playlistId, (err, foundPlaylist) => {
         if (err) return console.log(err);
-        
+
         db.Song.findByIdAndUpdate(
             req.params.songId,
             req.body,
             {new: true},
             (err, updatedSong) => {
                 if (err) return console.log(err);
-                console.log(updatedSong);
     
-                res.redirect(`../playlists/${foundPlaylist.id}`);
+                res.redirect(`/playlists/${foundPlaylist.id}/edit`);
             }
         );
     });
@@ -85,21 +84,24 @@ router.put('/:songId' , (req,res) => {
 //Delete
 router.delete('/:songId' , (req,res) => {
     const songId = req.params.songId;
+    console.log('song id', songId)
+    console.log('playlist id', req.body.playlistId)
 
     db.Song.findByIdAndDelete(songId, (err) => {
         if (err) return console.log(err);
-
-        db.Playlist.findOne({'song': songId} , (err, foundPlaylist) => {
+    
+        db.Playlist.findByIdAndUpdate(req.body.playlistId, {$pull: {song: [songId]}}, (err, foundPlaylist) => {
+            console.log(foundPlaylist)
             if (err) return console.log(err);
-
+        
             foundPlaylist.song.remove(songId);
             foundPlaylist.save((err, updatedPlaylist) => {
                 if (err) return console.log(err);
-
                 console.log('updated:' , updatedPlaylist);
+            
+                res.redirect(`/playlists/${foundPlaylist.id}/edit`);
             });
         });
-        res.redirect('/songs');
     });
 });
 
