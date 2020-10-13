@@ -84,22 +84,24 @@ router.put('/:songId' , (req,res) => {
 //Delete
 router.delete('/:songId' , (req,res) => {
     const songId = req.params.songId;
-    
+    console.log('song id', songId)
+    console.log('playlist id', req.body.playlistId)
+
     db.Song.findByIdAndDelete(songId, (err) => {
         if (err) return console.log(err);
-        
-        console.log(songId)
-        db.Playlist.findOne({'song': songId} , (err, foundPlaylist) => {
+    
+        db.Playlist.findByIdAndUpdate(req.body.playlistId, {$pull: {song: [songId]}}, (err, foundPlaylist) => {
+            console.log(foundPlaylist)
             if (err) return console.log(err);
-
+        
             foundPlaylist.song.remove(songId);
             foundPlaylist.save((err, updatedPlaylist) => {
                 if (err) return console.log(err);
-
                 console.log('updated:' , updatedPlaylist);
+            
+                res.redirect(`/playlists/${foundPlaylist.id}/edit`);
             });
         });
-        res.redirect(`/playlists/${foundPlaylist.id}/edit`);
     });
 });
 

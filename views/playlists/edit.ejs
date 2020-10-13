@@ -72,14 +72,14 @@
                             <td>
                                 <input type="submit" value="Save Song">
                             </td>
-                            <form action="/songs/<%= song._id %>?_method=DELETE" method="POST">
-                                <td>
-                                    <input type="submit" value="Delete Song">
-                                    <input type="hidden" name="playlistId" value="<%= playlist._id %>"> 
-                                </td>
-                            </form> 
                             <input type="hidden" name="playlistId" value="<%= playlist._id %>"> 
                         </form>
+                        <form action="/songs/<%= song._id %>?_method=DELETE" method="POST">
+                            <td>
+                                <input type="submit" value="Delete Song">
+                                <input type="hidden" name="playlistId" value="<%= playlist._id %>"> 
+                            </td>
+                        </form> 
                     </tr>
                 <% }) %>
             </table>
