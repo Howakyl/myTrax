@@ -6,6 +6,7 @@
     <title>Express Music</title>
 </head>
 <body>
+    <%- include('../partials/navbar') %>
     <header>
         <h1><%= playlist.playlistName %></h1>
         <h2>Genre: <%= playlist.genre %></h2>
@@ -37,17 +38,20 @@
                     <% } %>
                 </select>
         </div>
-    <section>
-        <!-- <form action="../songs/<%= playlist.song._id %>?_method=PUT" method="POST"> -->
+        <input type="submit" value="Save Info">
+    </form>
+            <section>
             <table>
                 <tr>
                     <th>Title</th>
                     <th>Artist</th>
                     <th>Album</th>
                     <th>Link</th>
+                    <th>Edit</th>
                 </tr>
                 <% playlist.song.forEach((song) => { %>
                     <tr>
+                        <form action="/playlists/<%= playlist._id %>?_method=PUT" method="POST">
                             <td>
                                 <label for="songName"></label>
                                 <input type="text" name="songName" value="<%= song.songName %>">
@@ -64,14 +68,15 @@
                                 <label for="link"></label>
                                 <input type="text" name="link" value="<%= song.link %>">
                             </td>
+                            <td>
+                                <input type="submit" value="Save Songs">
+                            </td>
+                        </form>
                     </tr>
                 <% }) %>
             </table>
-            <input type="submit" value="Save Changes">
-        <!-- </form> -->
     </section>
-    </form>
-
+    <button><a href="/playlists/<%= playlist._id %>">Save Playlist</a></button>
     <section>
         <form action="/playlists/<%= playlist._id %>?_method=DELETE" method="POST">
             <input type="submit" value="Delete Playlist">

@@ -73,7 +73,7 @@ router.put('/:playlistId' , (req,res) => {
         if (err) return console.log(err);
 
         console.log(updatedPlaylist);
-        res.redirect(`/playlists/${updatedPlaylist._id}`);
+        res.redirect(`/playlists/${updatedPlaylist._id}/edit`);
     });
 });
 

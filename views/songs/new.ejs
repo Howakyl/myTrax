@@ -6,6 +6,7 @@
     <title>Express Music</title>
 </head>
 <body>
+    <%- include('../partials/navbar') %>
     <h1>Add Songs to Playlist</h1>
     <form action="/songs" method="POST">
         <select name="playlist">
@@ -31,5 +32,6 @@
         </div>
         <input type="submit" value="Add Song">
     </form>
+    <button><a href="../playlists">Save Changes</a></button>
 </body>
 </html>
