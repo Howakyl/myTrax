@@ -1,0 +1,17 @@
+:root {
+    --primary-color: #5d5d61;
+    --secondary-color: #6737b3;
+};
+
+.nav-link {
+    color:  var(--secondary-color);
+}
+
+
+.navbar-dark .navbar-nav .nav-link:hover {
+    color: var(--secondary-color);
+}
+
+body {
+    background-color: var(--primary-color);
+}

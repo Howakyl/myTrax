@@ -16,6 +16,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 // ---------- MIDDLEWARE
 app.use(morgan('tiny'));
 app.use(methodOverride('_method'));
+app.use(express.static(`${__dirname}/public`));
 
 // HOME
 app.get('/', (req, res) => {
