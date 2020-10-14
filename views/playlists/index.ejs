@@ -1,44 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Express Music</title>
-</head>
+    <%- include('../partials/head') %>
 <body>
     <%- include('../partials/navbar') %>
-    <h1>All Playlists</h1>
-    <button><a href="/playlists/new">Add a New Playlist</a></button>
+    <div class="d-flex flex-column align-items-center container">
+        <h1 class="mb-5">All Playlists</h1>
+    </div>
 
+    <div class="container">
+        <% for(let i = 0; i < playlists.length; i ++) { %>
+            <section>
+                <table class="table table-bordered table-hover table-dark">
+                    <thead  class="thead-container">
+                        <tr>
+                            <th class="table-purple" colspan="3"><a class="table-title" href="/playlists/<%= playlists[i]._id %>"><%= playlists[i].playlistName %></a></th>
+                        </tr>
+                    </thead>
+                    <tr class="th-info">
+                        <th>Title</th>
+                        <th>Artist</th>
+                        <th>Album</th>
+                    </tr>
+                    <% playlists[i].song.forEach((song) => { %>
+                        <tr>
+                                <td <% if(song.link !== '') { %>
+                                    class="cell-purple"
+                                <% } %>>
+                                    <a <% if(song.link !== '') { %>
+                                    href="<%= song.link %>" target="_blank" class="song-link"><%= song.songName %></a>
+                                    <% } else {%> 
+                                        <td><%= song.songName %></td>
+                                    <% } %>
+                                </td>
+                                <td><%= song.artist %></td>
+                                <td><%= song.album %></td>
+                        </tr>
+                    <% }) %>
+                </table>
+            </section>
+            <% } %>
+    </div>
     
-    <% for(let i = 0; i < playlists.length; i ++) { %>
-    <section>
-        <table>
-            <thead>
-                <tr>
-                    <th colspan="3"><a href="/playlists/<%= playlists[i]._id %>"><%= playlists[i].playlistName %></a></th>
-                </tr>
-            </thead>
-            <tr>
-                <th>Title</th>
-                <th>Artist</th>
-                <th>Album</th>
-            </tr>
-            <% playlists[i].song.forEach((song) => { %>
-                <tr>
-                        <td>
-                            <a <% if(song.link !== '') { %>
-                            href="<%= song.link %>" target="_blank"><%= song.songName %></a>
-                            <% } else {%> 
-                                <td><%= song.songName %></td>
-                            <% } %>
-                        </td>
-                        <td><%= song.artist %></td>
-                        <td><%= song.album %></td>
-                </tr>
-            <% }) %>
-        </table>
-    </section>
-    <% } %>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/js/bootstrap.bundle.min.js" integrity="sha512-iceXjjbmB2rwoX93Ka6HAHP+B76IY1z0o3h+N1PeDtRSsyeetU3/0QKJqGyPJcX63zysNehggFwMC/bi7dvMig==" crossorigin="anonymous"></script>
+    <script src="./scripts/app.js"></script>
 </body>
 </html>

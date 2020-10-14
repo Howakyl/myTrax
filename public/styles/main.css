@@ -22,6 +22,10 @@
     letter-spacing: .25em;
 }
 
+.header-m {
+    font-size:1rem;
+}
+
 body {
     background-color: var(--primary-color);
     font-family: 'Bebas Neue' , cursive;
@@ -72,4 +76,53 @@ h1 {
     padding: 10px 10px;
     width: 100%;
     display: inline-block;
+}
+
+table {
+    table-layout: fixed;
+}
+
+.table-purple {
+    background-color: var(--secondary-color);
+    width: 100%;
+    text-align: center;
+}
+
+.table-title {
+    color: #e1e1e6;
+    text-shadow: 2px 2px var(--primary-color);
+    font-size: 25px;
+    letter-spacing: .25em;
+    display: inline-block;
+    width: 100%;
+}
+
+.table-title:hover {
+    color: #e1e1e6;
+    text-decoration: none;
+    text-shadow: 4px 4px var(--primary-color);
+}
+
+.table-dark td, .table-dark th, .table-dark thead th {
+    border-color: var(--primary-color);
+}
+
+.th-info {
+    text-align: center;
+    text-shadow: 2px 2px var(--secondary-color);
+    border-bottom: 3px solid var(--primary-color);
+    letter-spacing: .25em;
+}
+
+.song-link {
+    color: #e1e1e6;
+}
+
+.song-link:hover {
+    color: #e1e1e6;
+    text-decoration: none;
+}
+
+.cell-purple:hover {
+    background-color: var(--secondary-color);
 }
