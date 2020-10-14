@@ -21,20 +21,41 @@
             <label for="genre">Genre:</label>
                 <select name="genre">
                     <option><%= playlist.genre %></option>
-                    <% if (playlist.genre !== 'R&B') { %>
-                        <option value="R&B">R&B</option>
+                    <% if (playlist.genre !== 'Alternative') { %>
+                        <option value="Alternative">Alternative</option>
                     <% } %>
-                    <% if (playlist.genre !== 'Rock') { %>
-                        <option value="Rock">Rock</option>
+                    <% if (playlist.genre !== 'Classical') { %>
+                        <option value="Classical">Classical</option>
+                    <% } %>
+                    <% if (playlist.genre !== 'Country') { %>
+                        <option value="Country">Country</option>
+                    <% } %>
+                    <% if (playlist.genre !== 'Hip-Hop') { %>
+                        <option value="Hip-Hop">Hip-Hop</option>
                     <% } %>
                     <% if (playlist.genre !== 'Jazz') { %>
                         <option value="Jazz">Jazz</option>
                     <% } %>
+                    <% if (playlist.genre !== 'Metal') { %>
+                        <option value="Metal">Metal</option>
+                    <% } %>
                     <% if (playlist.genre !== 'Pop') { %>
                         <option value="Pop">Pop</option>
                     <% } %>
-                    <% if (playlist.genre !== 'Country') { %>
-                        <option value="Country">Country</option>
+                    <% if (playlist.genre !== 'R&B') { %>
+                        <option value="R&B">R&B</option>
+                    <% } %>
+                    <% if (playlist.genre !== 'Reggae') { %>
+                        <option value="Reggae">Reggae</option>
+                    <% } %>
+                    <% if (playlist.genre !== 'Rock') { %>
+                        <option value="Rock">Rock</option>
+                    <% } %>
+                    <% if (playlist.genre !== 'Techno') { %>
+                        <option value="Techno">Techno</option>
+                    <% } %>
+                    <% if (playlist.genre !== 'Other') { %>
+                        <option value="Other">Other</option>
                     <% } %>
                 </select>
         </div>
