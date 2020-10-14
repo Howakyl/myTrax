@@ -1,17 +1,68 @@
 :root {
-    --primary-color: #5d5d61;
+    --primary-color: #1e1e1f;
     --secondary-color: #6737b3;
+    --third-color: #602c94;
 };
 
 .nav-link {
-    color:  var(--secondary-color);
+    color:  #e1e1e6;
+    text-shadow: 2px 2px var(--secondary-color);
 }
 
+.bg-dark {
+    background-color: var(--secondary-color) !important;
+}
 
 .navbar-dark .navbar-nav .nav-link:hover {
-    color: var(--secondary-color);
+    color: #e1e1e6;
+    text-shadow: 2px 2px var(--primary-color);
 }
 
 body {
     background-color: var(--primary-color);
+}
+
+h1 {
+    /* Inspired by https://css-tricks.com/3d-text-tower/ */
+    color: #e1e1e6;
+    margin-top: 100px;
+    text-shadow: 2px 2px var(--secondary-color);
+    font: bold 52px Helvetica, Arial, Sans-Serif;
+    position: relative; 
+    top: -3px; 
+    left: -3px; 
+    text-shadow:1px 1px var(--secondary-color), 
+                2px 2px var(--secondary-color), 
+                3px 3px var(--secondary-color), 
+                4px 4px var(--secondary-color), 
+                5px 5px var(--secondary-color), 
+                6px 6px var(--secondary-color);
+}
+
+.btn-primary {
+    background-color: var(--secondary-color);
+    border: 10px 10px solid var(--third-color);
+    padding: 0;
+}
+
+.btn-primary:hover {
+    background-color: var(--third-color);
+    text-shadow: 2px 2px var(--primary-color);
+}
+
+.btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show>.btn-primary.dropdown-toggle {
+    background-color: #602c94;
+}
+
+.w-100 {
+    width: 200px !important;
+    margin-top: 100px;
+}
+
+.w-100 a {
+    color: #e1e1e6;
+    text-decoration: none;
+    padding: 10px 10px;
+    width: 100%;
+    display: inline-block;
 }
