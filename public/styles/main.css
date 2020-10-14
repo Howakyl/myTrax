@@ -78,6 +78,15 @@ h1 {
     display: inline-block;
 }
 
+.input-button {
+    margin-top: 1em;
+}
+
+form .input-button {
+    padding: 10px 0;
+    margin-left: 10px;
+}
+
 table {
     table-layout: fixed;
 }
@@ -91,6 +100,12 @@ table {
     background-color: var(--secondary-color);
     width: 100%;
     text-align: center;
+}
+
+.show-table-title {
+    letter-spacing: .25em;
+    font-size: 25px;
+    text-shadow: 2px 2px var(--primary-color);
 }
 
 .table-title {
