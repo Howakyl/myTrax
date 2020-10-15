@@ -17,56 +17,59 @@
         <h1 class="mb-5"><%= playlist.playlistName %></h1>
     </header>
     
-    <form action="/playlists/<%= playlist._id %>?_method=PUT" method="POST">
-        <div>
-            <label for="playlistName">Playlist Name:</label>
-                <input class="edit-field form-control-sm" type="text" name="playlistName" value="<%= playlist.playlistName %>">
-        </div>
-        <div>
-            <label for="genre">Genre:</label>
-                <select name="genre">
-                    <option><%= playlist.genre %></option>
-                    <% if (playlist.genre !== 'Alternative') { %>
-                        <option value="Alternative">Alternative</option>
-                    <% } %>
-                    <% if (playlist.genre !== 'Classical') { %>
-                        <option value="Classical">Classical</option>
-                    <% } %>
-                    <% if (playlist.genre !== 'Country') { %>
-                        <option value="Country">Country</option>
-                    <% } %>
-                    <% if (playlist.genre !== 'Hip-Hop') { %>
-                        <option value="Hip-Hop">Hip-Hop</option>
-                    <% } %>
-                    <% if (playlist.genre !== 'Jazz') { %>
-                        <option value="Jazz">Jazz</option>
-                    <% } %>
-                    <% if (playlist.genre !== 'Metal') { %>
-                        <option value="Metal">Metal</option>
-                    <% } %>
-                    <% if (playlist.genre !== 'Pop') { %>
-                        <option value="Pop">Pop</option>
-                    <% } %>
-                    <% if (playlist.genre !== 'R&B') { %>
-                        <option value="R&B">R&B</option>
-                    <% } %>
-                    <% if (playlist.genre !== 'Reggae') { %>
-                        <option value="Reggae">Reggae</option>
-                    <% } %>
-                    <% if (playlist.genre !== 'Rock') { %>
-                        <option value="Rock">Rock</option>
-                    <% } %>
-                    <% if (playlist.genre !== 'Techno') { %>
-                        <option value="Techno">Techno</option>
-                    <% } %>
-                    <% if (playlist.genre !== 'Other') { %>
-                        <option value="Other">Other</option>
-                    <% } %>
-                </select>
-        </div>
-        <input type="submit" value="Save Playlist Info">
-    </form>
-            <section class="container">
+    <section class="container">
+        <form action="/playlists/<%= playlist._id %>?_method=PUT" method="POST">
+            <div>
+                <label class="edit-field" for="playlistName">Playlist Name:</label>
+                    <input class="edit-field form-control-sm" type="text" name="playlistName" value="<%= playlist.playlistName %>">
+            </div>
+            <div>
+                <label class="edit-field" for="genre">Genre:</label>
+                    <select class="custom-select" name="genre">
+                        <option><%= playlist.genre %></option>
+                        <% if (playlist.genre !== 'Alternative') { %>
+                            <option value="Alternative">Alternative</option>
+                        <% } %>
+                        <% if (playlist.genre !== 'Classical') { %>
+                            <option value="Classical">Classical</option>
+                        <% } %>
+                        <% if (playlist.genre !== 'Country') { %>
+                            <option value="Country">Country</option>
+                        <% } %>
+                        <% if (playlist.genre !== 'Hip-Hop') { %>
+                            <option value="Hip-Hop">Hip-Hop</option>
+                        <% } %>
+                        <% if (playlist.genre !== 'Jazz') { %>
+                            <option value="Jazz">Jazz</option>
+                        <% } %>
+                        <% if (playlist.genre !== 'Metal') { %>
+                            <option value="Metal">Metal</option>
+                        <% } %>
+                        <% if (playlist.genre !== 'Pop') { %>
+                            <option value="Pop">Pop</option>
+                        <% } %>
+                        <% if (playlist.genre !== 'R&B') { %>
+                            <option value="R&B">R&B</option>
+                        <% } %>
+                        <% if (playlist.genre !== 'Reggae') { %>
+                            <option value="Reggae">Reggae</option>
+                        <% } %>
+                        <% if (playlist.genre !== 'Rock') { %>
+                            <option value="Rock">Rock</option>
+                        <% } %>
+                        <% if (playlist.genre !== 'Techno') { %>
+                            <option value="Techno">Techno</option>
+                        <% } %>
+                        <% if (playlist.genre !== 'Other') { %>
+                            <option value="Other">Other</option>
+                        <% } %>
+                    </select>
+            </div>
+            <input class="w-100 btn-lg btn-primary input-button ml-0 mb-3" type="submit" value="Save Playlist Info">
+        </form>
+    </section>
+    
+            <section class="container table-scrolling-edit">
             <table class="table table-bordered table-hover table-dark shrink">
                 <thead class="thead-container">
                     <tr>
@@ -136,7 +139,10 @@
             <input class="w-100 btn-lg btn-primary input-button" type="submit" value="Delete Playlist">
         </form>
     </section>
-    
+    <div class="container">
+        <footer class="footer-info">Made By Onias I. & Kyle H.</footer>
+    </div>
+
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/js/bootstrap.bundle.min.js" integrity="sha512-iceXjjbmB2rwoX93Ka6HAHP+B76IY1z0o3h+N1PeDtRSsyeetU3/0QKJqGyPJcX63zysNehggFwMC/bi7dvMig==" crossorigin="anonymous"></script>
     <script src="/scripts/app.js"></script>

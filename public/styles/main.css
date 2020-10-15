@@ -98,6 +98,11 @@ table {
     height: 800px !important;
 }
 
+.table-scrolling-edit {
+    overflow: auto;
+    height: 400px !important;
+}
+
 .table-purple {
     background-color: var(--secondary-color);
     width: 100%;
@@ -159,11 +164,13 @@ td {
 .edit-field {
     background-color: var(--primary-color);
     color: #e1e1e6;
+    letter-spacing: .15em;
 }
 
 td input {
     margin-left: 30px;
     margin-top: 5px;
+    letter-spacing: .15em;
 }
 
 .hidden-input-button {
@@ -198,4 +205,12 @@ svg:hover {
 .footer-info {
     color: var(--secondary-color);
     margin-top: 20px;
+}
+
+.custom-select {
+    display: inline;
+    width: auto;
+    background-color: var(--primary-color);
+    color: #e1e1e6;
+    border: 1px solid grey;
 }
