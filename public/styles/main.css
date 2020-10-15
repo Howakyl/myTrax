@@ -229,3 +229,31 @@ svg:hover {
 .btn-container {
     margin-bottom: 50px;
 }
+
+.modal-dialog {
+    max-width: 800px !important;
+}
+
+.modal-header {
+    background-color: var(--secondary-color);
+    border-bottom: none;
+}
+
+.modal-body {
+    background-color: var(--primary-color);
+}
+
+.modal-footer {
+    background-color: var(--secondary-color);
+    border-top: none;
+}
+
+.modal-title {
+    color: #e1e1e6;
+    letter-spacing: .15em;
+}
+
+.btn-secondary {
+    background-color: var(--primary-color);
+    border: none;
+}
