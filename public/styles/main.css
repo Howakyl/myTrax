@@ -138,6 +138,13 @@ table {
 
 .song-link {
     color: #e1e1e6;
+    display: inline-block;
+    width: 100%;
+    /* padding: 0; */
+}
+
+td {
+    letter-spacing: .15em;
 }
 
 .song-link:hover {
@@ -186,4 +193,9 @@ svg:hover {
 
 .shrink {
     table-layout: auto;
+}
+
+.footer-info {
+    color: var(--secondary-color);
+    margin-top: 20px;
 }
