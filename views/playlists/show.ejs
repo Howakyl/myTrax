@@ -10,56 +10,56 @@
         <link rel="stylesheet" href="../styles/main.css">
         <title>myTrax</title>
     </head>
-
-<body>
-    <%- include('../partials/navbar') %>
-    <header class="d-flex flex-column align-items-center container">
-        <h1 class="mb-5"><%= playlist.playlistName %></h1>
+    <body>
+        <%- include('../partials/navbar') %>
+        <header class="d-flex flex-column align-items-center container">
+            <h1 class="mb-5"><%= playlist.playlistName %></h1>
+            
+        </header>
         
-    </header>
-    
-    <section class="container">
-        <table class="table table-bordered table-hover table-dark">
-            <thead class="thead-container">
-                <tr>
-                    <th class="table-purple show-table-title" colspan="3">Genre: <%= playlist.genre %></th>
+        <section class="container">
+            <table class="table table-bordered table-hover table-dark">
+                <thead class="thead-container">
+                    <tr>
+                        <th class="table-purple show-table-title" colspan="3">Genre: <%= playlist.genre %></th>
+                    </tr>
+                </thead>
+                <tr class="th-info">
+                    <th>Title</th>
+                    <th>Artist</th>
+                    <th>Album</th>
                 </tr>
-            </thead>
-            <tr class="th-info">
-                <th>Title</th>
-                <th>Artist</th>
-                <th>Album</th>
-            </tr>
-            <% playlist.song.forEach((song) => { %>
-                <tr>
-                    <td <% if(song.link !== '') { %>
-                        class="cell-purple"
-                    <% } %>>
-                        <a <% if(song.link !== '') { %>
-                        href="<%= song.link %>" target="_blank" class="song-link"><%= song.songName %></a>
-                        <% } else {%> 
-                            <td><%= song.songName %></td>
-                        <% } %>
-                    </td>
-                        <td><%= song.artist %></td>
-                        <td><%= song.album %></td>
-                </tr>
-            <% }) %>
-        </table>
-    </section>
+                <% playlist.song.forEach((song) => { %>
+                    <tr>
+                        <td <% if(song.link !== '') { %>
+                            class="cell-purple"
+                        <% } %>>
+                            <a <% if(song.link !== '') { %>
+                            href="<%= song.link %>" target="_blank" class="song-link"><%= song.songName %></a>
+                            <% } else {%> 
+                                <td><%= song.songName %></td>
+                            <% } %>
+                        </td>
+                            <td><%= song.artist %></td>
+                            <td><%= song.album %></td>
+                    </tr>
+                <% }) %>
+            </table>
+        </section>
 
-    <section class="container d-flex flex-row align-items-center justify-content-center">
+        <section class="container d-flex flex-row align-items-center justify-content-center">
 
-        <button class="w-100 btn-lg btn-primary input-button"><a href="../songs/new">Add Songs</a></button>
-        <form action="/playlists/<%= playlist._id %>/edit" method="GET">
-            <input class="w-100 btn-lg btn-primary input-button" type="submit" value="Edit Playlist">
-        </form>
-    </section>
-    <div class="container">
-        <footer class="footer-info">Made By Onias I. & Kyle H.</footer>
-    </div>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/js/bootstrap.bundle.min.js" integrity="sha512-iceXjjbmB2rwoX93Ka6HAHP+B76IY1z0o3h+N1PeDtRSsyeetU3/0QKJqGyPJcX63zysNehggFwMC/bi7dvMig==" crossorigin="anonymous"></script>
-    <script src="../scripts/app.js"></script>
-</body>
+            <button class="w-100 btn-lg btn-primary input-button"><a href="../songs/new">Add Songs</a></button>
+            <form action="/playlists/<%= playlist._id %>/edit" method="GET">
+                <input class="w-100 btn-lg btn-primary input-button" type="submit" value="Edit Playlist">
+            </form>
+        </section>
+        <div class="container">
+            <footer class="footer-info">Made By Onias I. & Kyle H.</footer>
+        </div>
+        
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/js/bootstrap.bundle.min.js" integrity="sha512-iceXjjbmB2rwoX93Ka6HAHP+B76IY1z0o3h+N1PeDtRSsyeetU3/0QKJqGyPJcX63zysNehggFwMC/bi7dvMig==" crossorigin="anonymous"></script>
+        <script src="../scripts/app.js"></script>
+    </body>
 </html>
