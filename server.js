@@ -23,8 +23,13 @@ app.get('/', (req, res) => {
     res.render('index');
 });
 
+
 app.use('/playlists', ctrl.playlists);
 app.use('/songs', ctrl.songs);
+
+app.use('*', (req, res) => {
+    res.render('404');
+});
 
 // ---------- LISTENER
 app.listen(PORT, () => console.log(`Server running on PORT: ${PORT}`));
