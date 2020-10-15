@@ -211,6 +211,6 @@ svg:hover {
     display: inline;
     width: auto;
     background-color: var(--primary-color);
-    color: #e1e1e6;
-    border: 1px solid grey;
+    /* color: #e1e1e6;
+    border: 1px solid grey; */
 }
