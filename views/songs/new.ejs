@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/css/bootstrap.min.css" integrity="sha512-oc9+XSs1H243/FRN9Rw62Fn8EtxjEYWHXRvjS43YtueEewbS6ObfXcJNyohjHqVKFPoXXUxwc+q1K7Dee6vv9g==" crossorigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Faster+One&display=swap" rel="stylesheet">
+        <link rel="icon" href="./images/favicon_io/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="/images/favicon_io/favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="../styles/main.css">
+        <title>myTrax</title>
+    </head>
+    <body>
+        <%- include('../partials/navbar') %>
+        <h1 class="d-flex flex-column align-items-center container mb-5">Add Songs to Playlist</h1>
+        <form class="container" action="/songs" method="POST">
+            <label class="edit-field" for="playlist">Playlist Name:</label>
+                <select class="custom-select" name="playlist">
+                    <% playlists.forEach((playlist) => { %>
+                        <option value="<%= playlist.id %>"><%= playlist.playlistName %></option>
+                        <% }) %>
+                </select>
+                <div>
+                    <label class="edit-field" for="songName">Song Name:</label>
+                    <input class="edit-field form-control-sm" type="text" name="songName" placeholder="song name">
+                </div>
+                <div>
+                    <label class="edit-field" for="artist">Artist:</label>
+                    <input class="edit-field form-control-sm" type="text" name="artist" placeholder="artist">
+                </div>
+                <div>
+                    <label class="edit-field" for="album">Album:</label>
+                    <input class="edit-field form-control-sm" type="text" name="album" placeholder="album">
+                </div>
+                <div>
+                    <label class="edit-field" for="link">Link:</label>
+                    <input class="edit-field form-control-sm" type="text" name="link" placeholder="(ex: youtube, spotify)">
+                </div>
+                <div class="container d-flex flex-row align-items-center justify-content-center">
+                    <input class="w-100 btn-lg btn-primary input-button" type="submit" value="Add Song">
+            </form>
+                <button class="w-100 btn-lg btn-primary input-button save-padding"><a href="../playlists">Save Changes</a></button>        
+                </div>
+            <div>
+                <footer class="footer-info">Made By Onias I. & Kyle H.</footer>
+            </div>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/js/bootstrap.bundle.min.js" integrity="sha512-iceXjjbmB2rwoX93Ka6HAHP+B76IY1z0o3h+N1PeDtRSsyeetU3/0QKJqGyPJcX63zysNehggFwMC/bi7dvMig==" crossorigin="anonymous"></script>
+        <script src="./scripts/app.js"></script>
+    </body>
+</html>

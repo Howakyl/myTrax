@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Express Music</title>
+</head>
+<body>
+    <%- include('../partials/navbar') %>
+    <h1>Edit Song</h1>
+    <form action="/songs/<%= song._id %>?_method=PUT" method="POST">
+        <select name="playlist">
+            <% playlists.forEach((playlist) => { %>
+                <option value="<%= playlist.id %>"><%= playlist.playlistName %></option>
+            <% }) %>
+        </select>
+        <div>
+            <label for="songName">Song Name:</label>
+            <input type="text" name="songName" value="<%= song.songName %>">
+        </div>
+        <div>
+            <label for="artist">Artist:</label>
+            <input type="text" name="artist" value="<%= song.artist %>">
+        </div>
+        <div>
+            <label for="album">Album:</label>
+            <input type="text" name="album" value="<%= song.album %>">
+        </div>
+        <div>
+            <label for="link">Link:</label>
+            <input type="text" name="link" value="<%= song.link %>">
+        </div>
+        <input type="submit" value="Save Changes">
+    </form>
+    <section>
+        <form action="/songs/<%= song._id %>?_method=DELETE" method="POST">
+            <input type="submit" value="Delete Song">
+        </form>
+    </section>
+</body>
+</html>

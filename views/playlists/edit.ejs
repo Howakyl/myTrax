@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/css/bootstrap.min.css" integrity="sha512-oc9+XSs1H243/FRN9Rw62Fn8EtxjEYWHXRvjS43YtueEewbS6ObfXcJNyohjHqVKFPoXXUxwc+q1K7Dee6vv9g==" crossorigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Faster+One&display=swap" rel="stylesheet">
+        <link rel="icon" href="/images/favicon_io/favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="/styles/main.css">
+        <title>myTrax</title>
+    </head>
+<body>
+    <%- include('../partials/navbar') %>
+    <header class="d-flex flex-column align-items-center container">
+        <h1 class="mb-5"><%= playlist.playlistName %></h1>
+    </header>
+    
+    <section class="container">
+        <form action="/playlists/<%= playlist._id %>?_method=PUT" method="POST">
+            <div>
+                <label class="edit-field" for="playlistName">Playlist Name:</label>
+                    <input class="edit-field form-control-sm" type="text" name="playlistName" value="<%= playlist.playlistName %>">
+            </div>
+            <div>
+                <label class="edit-field" for="genre">Genre:</label>
+                    <select class="custom-select" name="genre">
+                        <option><%= playlist.genre %></option>
+                        <% if (playlist.genre !== 'Alternative') { %>
+                            <option value="Alternative">Alternative</option>
+                        <% } %>
+                        <% if (playlist.genre !== 'Classical') { %>
+                            <option value="Classical">Classical</option>
+                        <% } %>
+                        <% if (playlist.genre !== 'Country') { %>
+                            <option value="Country">Country</option>
+                        <% } %>
+                        <% if (playlist.genre !== 'Hip-Hop') { %>
+                            <option value="Hip-Hop">Hip-Hop</option>
+                        <% } %>
+                        <% if (playlist.genre !== 'Jazz') { %>
+                            <option value="Jazz">Jazz</option>
+                        <% } %>
+                        <% if (playlist.genre !== 'Metal') { %>
+                            <option value="Metal">Metal</option>
+                        <% } %>
+                        <% if (playlist.genre !== 'Pop') { %>
+                            <option value="Pop">Pop</option>
+                        <% } %>
+                        <% if (playlist.genre !== 'R&B') { %>
+                            <option value="R&B">R&B</option>
+                        <% } %>
+                        <% if (playlist.genre !== 'Reggae') { %>
+                            <option value="Reggae">Reggae</option>
+                        <% } %>
+                        <% if (playlist.genre !== 'Rock') { %>
+                            <option value="Rock">Rock</option>
+                        <% } %>
+                        <% if (playlist.genre !== 'Techno') { %>
+                            <option value="Techno">Techno</option>
+                        <% } %>
+                        <% if (playlist.genre !== 'Other') { %>
+                            <option value="Other">Other</option>
+                        <% } %>
+                    </select>
+            </div>
+            <input class="w-100 btn-lg btn-primary input-button ml-0 mb-3" type="submit" value="Save Playlist Info">
+        </form>
+    </section>
+
+            <section class="container table-scrolling-edit">
+            <table class="table table-bordered table-hover table-dark shrink">
+                <thead class="thead-container">
+                    <tr>
+                        <th class="table-purple show-table-title" colspan="6">Genre: <%= playlist.genre %></th>
+                    </tr>
+                </thead>
+                <tr class="th-info">
+                    <th>Title</th>
+                    <th>Artist</th>
+                    <th>Album</th>
+                    <th>Link</th>
+                    <th>Save</th>
+                    <th>Delete</th>
+                <tbody>
+                </tr>
+                <% playlist.song.forEach((song) => { %>
+                    <tr>
+                        <form action="/songs/<%= song._id %>?_method=PUT" method="POST">
+                            <td>
+                                <label for="songName"></label>
+                                <input class="edit-field form-control-sm" type="text" name="songName" value="<%= song.songName %>">
+                            </td>
+                            <td>
+                                <label for="artist"></label>
+                                <input class="edit-field form-control-sm" type="text" name="artist" value="<%= song.artist %>">
+                            </td>
+                            <td>
+                                <label for="album"></label>
+                                <input class="edit-field form-control-sm" type="text" name="album" value="<%= song.album %>">
+                            </td>
+                            <td>
+                                <label for="link"></label>
+                                <input class="edit-field form-control-sm" type="text" name="link" value="<%= song.link %>">
+                            </td>
+                            <td class="shrink">
+                                <label>
+                                    <input type="submit" class="hidden-input-button">
+                                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-check-circle-fill green-check" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                                    </svg>
+                                </label>
+                            </td>
+                            <input type="hidden" name="playlistId" value="<%= playlist._id %>"> 
+                        </form>
+                        <form action="/songs/<%= song._id %>?_method=DELETE" method="POST">
+                            <td class="shrink">
+                                <label>
+                                    <input type="submit" class="hidden-input-button">
+                                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-x-circle-fill red-x" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/>
+                                    </svg>
+                                    <input type="hidden" name="playlistId" value="<%= playlist._id %>"> 
+                                </label>
+                            </td>
+                        </form> 
+                    </tr>
+                <% }) %>
+            </tbody>
+            </table>
+        </section>
+                <section class="container d-flex flex-row align-items-center justify-content-center btn-container">
+                    <button class="w-100 btn-lg btn-primary input-button"><a href="/playlists/<%= playlist._id %>">Save Playlist</a></button>
+                    <button class="w-100 btn-lg btn-primary input-button ml-2"><a href="/songs/new">Add Songs</a></button>
+                    
+                    <form action="/playlists/<%= playlist._id %>?_method=DELETE" method="POST">
+                        <input class="w-100 btn-lg btn-primary input-button" type="submit" value="Delete Playlist">
+                    </form>
+                </section>
+
+    <div>
+        <footer class="footer-info">Made By Onias I. & Kyle H.</footer>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/js/bootstrap.bundle.min.js" integrity="sha512-iceXjjbmB2rwoX93Ka6HAHP+B76IY1z0o3h+N1PeDtRSsyeetU3/0QKJqGyPJcX63zysNehggFwMC/bi7dvMig==" crossorigin="anonymous"></script>
+    <script src="/scripts/app.js"></script>
+</body>
+</html>

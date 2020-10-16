@@ -9,16 +9,27 @@ require('dotenv').config();
 const PORT = process.env.PORT || 3000;
 app.set('view engine', 'ejs');
 
+const ctrl = require('./controllers');
+
 app.use(bodyParser.urlencoded({extended: false}));
 
 // ---------- MIDDLEWARE
 app.use(morgan('tiny'));
 app.use(methodOverride('_method'));
+app.use(express.static(`${__dirname}/public`));
 
 // HOME
 app.get('/', (req, res) => {
-    res.send('This is the home page!');
-})
+    res.render('index');
+});
+
+
+app.use('/playlists', ctrl.playlists);
+app.use('/songs', ctrl.songs);
+
+app.use('*', (req, res) => {
+    res.render('404');
+});
 
 // ---------- LISTENER
 app.listen(PORT, () => console.log(`Server running on PORT: ${PORT}`));
