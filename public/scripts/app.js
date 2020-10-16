@@ -16,14 +16,14 @@ watch = watch.slice() */
 
 
 
-var a = "https://open.spotify.com/track/10vkYRKw6Jjr7try1ir50G?si=aEjK7D2LTLO1G-okZ_HVqA";
-var b = "embed/";
-var position = 25;
-var spotify = [a.slice(0, position), b, a.slice(position)].join('');
+// var a = "https://open.spotify.com/track/10vkYRKw6Jjr7try1ir50G?si=aEjK7D2LTLO1G-okZ_HVqA";
+// var b = "embed/";
+// var position = 25;
+// let song.link = [song.link.slice(0, position), 'embed/', song.link.slice(position)].join('');
 
-if(spotify.includes('spotify')){
-    console.log(spotify);
+// if(spotify.includes('spotify')){
+//     console.log(spotify);
     
-} else {
-    console.log("not a spotify link")
-}
+// } else {
+//     console.log("not a spotify link")
+// }

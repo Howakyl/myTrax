@@ -45,7 +45,11 @@
                                           </button>
                                         </div>
                                         <div class="modal-body">
-                                          <iframe class="ml-5 pl-5" src="<%= song.link.replace('watch?v=','embed/') %>" width="80%" height="400px" frameborder="0"></iframe>
+                                          <iframe  src="<% if(song.link.includes('youtube')) { %>
+                                            <%= song.link.replace('watch?v=','embed/') %>" class="d-block ml-5 pl-5"
+                                          <% } else if(song.link.includes('spotify')) { %>
+                                            <%= song.link = [song.link.slice(0, 25), 'embed/', song.link.slice(25)].join(''); %> class="spot"
+                                          <% } %> width="80%" height="400px" frameborder="0"></iframe>
                                         </div>
                                         <div class="modal-footer">
                                           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
