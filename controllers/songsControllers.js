@@ -39,7 +39,6 @@ router.post('/', (req, res) => {
             foundPlaylist.save((err, savedPlaylist) => {
                 if(err) return console.log(err);
                 console.log(savedPlaylist);
-                // res.redirect(`../playlists/${foundPlaylist.id}`)
                 res.redirect('/songs/new')
             });
         });
