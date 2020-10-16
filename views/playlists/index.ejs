@@ -21,24 +21,46 @@
                         <th>Artist</th>
                         <th>Album</th>
                     </tr>
-                    <% playlists[i].song.forEach((song) => { %>
+                    <% playlists[i].song.forEach((song, j) => { %>
                         <tr>
-                                <td <% if(song.link !== '') { %>
-                                    class="cell-purple"
+                            <td <% if(song.link !== '') { %>
+                                class="cell-purple"
                                 <% } %>>
-                                    <a <% if(song.link !== '') { %>
-                                    href="<%= song.link %>" target="_blank" class="song-link"><%= song.songName %></a>
+                                <a <% if(song.link !== '') { %>
+                                    href="<%= song.link %>" target="_blank" data-toggle="modal" data-target="#exampleModal<%= i %>-<%= j %>" class="song-link"><%= song.songName %></a>
                                     <% } else {%> 
                                         <td><%= song.songName %></td>
                                     <% } %>
-                                </td>
-                                <td><%= song.artist %></td>
-                                <td><%= song.album %></td>
+                            </td>
+                            <td><%= song.artist %></td>
+                            <td><%= song.album %></td>
                         </tr>
-                    <% }) %>
-                </table>
-            </section>
-            <% } %>
+                                <div class="modal fade" id="exampleModal<%= i %>-<%= j %>" tabindex="-1" aria-labelledby="exampleModalLabel<%= i %>-<%= j %>" aria-hidden="true">
+                                    <div class="modal-dialog container">
+                                      <div class="modal-content">
+                                        <div class="modal-header">
+                                          <h5 class="modal-title" id="exampleModalLabel<%= i %>-<%= j %>"><%= song.songName %></h5>
+                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                          </button>
+                                        </div>
+                                        <div class="modal-body">
+                                          <iframe  src="<% if(song.link.includes('youtube')) { %>
+                                            <%= song.link.replace('watch?v=','embed/') %>" class="d-block ml-5 pl-5"
+                                          <% } else if(song.link.includes('spotify')) { %>
+                                            <%= song.link = [song.link.slice(0, 25), 'embed/', song.link.slice(25)].join(''); %> class="spot"
+                                          <% } %> width="80%" height="400px" frameborder="0"></iframe>
+                                        </div>
+                                        <div class="modal-footer">
+                                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                <% }) %>
+                            </table>
+                        </section>
+                        <% } %>
         </div>
         <div>
             <footer class="footer-info">Made By Onias I. & Kyle H.</footer>

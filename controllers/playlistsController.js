@@ -7,11 +7,11 @@ const db = require('../models');
 
 //GET INDEX
 router.get('/' , (req,res) => {
-
     db.Playlist.find({})
         .populate('song')
         .exec((err,allPlaylists) => {
             if (err) return console.log(err);
+
             const context = {
                 playlists: allPlaylists
             };
